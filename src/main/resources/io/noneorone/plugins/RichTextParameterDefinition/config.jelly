@@ -1,0 +1,35 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form" xmlns:st="jelly:stapler">
+
+    <f:entry title="${%Name}" field="name">
+        <f:textbox name="parameter.name" value="${instance.name}" />
+    </f:entry>
+
+    <f:entry title="${%Default Value}" field="defaultValue">
+        <textarea id="editor" name="parameter.defaultValue" style="width:100%;height:200px">
+            ${instance.defaultValue}
+        </textarea>
+    </f:entry>
+    <j:choose>
+        <j:when test="${instance.editorType == 2}">
+            <st:adjunct includes="io.noneorone.plugins.editorYUI" />
+        </j:when>
+        <j:otherwise>
+            <st:adjunct includes="io.noneorone.plugins.editorKind" />
+        </j:otherwise>
+    </j:choose>
+
+    <f:entry title="${%Description}" field="description">
+        <f:textarea name="parameter.description" value="${instance.description}"
+                    codemirror-mode="${app.markupFormatter.codeMirrorMode}"
+                    codemirror-config="${app.markupFormatter.codeMirrorConfig}"
+                    previewEndpoint="/markupFormatter/previewDescription" />
+    </f:entry>
+
+    <f:advanced>
+        <f:entry title="${%Support Base64}" field="base64Support" description="${%Support Base64 Description}">
+            <f:checkbox value="checked" />
+        </f:entry>
+    </f:advanced>
+
+</j:jelly>

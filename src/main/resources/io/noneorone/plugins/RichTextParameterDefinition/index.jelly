@@ -1,0 +1,24 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt" xmlns:p="/lib/hudson/project">
+
+    <j:set var="escapeEntryTitleAndDescription" value="false" />
+    <f:entry title="${h.escape(it.name)}" description="${it.formattedDescription}">
+        <div name="parameter">
+            <input type="hidden" name="name" value="${it.name}" />
+            <textarea id="editor" name="value" style="width:auto;height:200px">
+                ${it.defaultParameterValue.value}
+            </textarea>
+
+            <j:choose>
+                <j:when test="${it.editorType == 2}">
+                    <st:adjunct includes="io.noneorone.plugins.editorYUI" />
+                </j:when>
+                <j:otherwise>
+                    <st:adjunct includes="io.noneorone.plugins.editorKind" />
+                </j:otherwise>
+            </j:choose>
+        </div>
+    </f:entry>
+
+</j:jelly>

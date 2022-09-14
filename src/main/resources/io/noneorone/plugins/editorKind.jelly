@@ -1,0 +1,35 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core">
+    <link href="${it.packageUrl}/scripts/kindeditor/themes/default/default.css" rel="stylesheet" />
+    <script src="${it.packageUrl}/scripts/kindeditor/kindeditor-all-min.js" type="text/javascript" />
+    <script type="text/javascript">
+        KindEditor.ready(function (K) {
+            let config = {
+                // 配置编辑器的工具栏，其中”/”表示换行，”|”表示分隔符
+                items: [
+                    'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+                    'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                    'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                    'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+                    'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                    'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
+                    'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'pagebreak',
+                    'anchor', 'link', 'unlink', '|', 'about'
+                ],
+
+                // 不显示图片上传按钮
+                allowImageUpload: false,
+                // 不显示Flash上传按钮
+                allowFlashUpload: false,
+                // 不显示视音频上传按钮
+                allowMediaUpload: false,
+                // 不显示文件上传按钮
+                allowFileUpload: false,
+
+                // 编辑器的宽度，可以设置px或%，比textarea输入框样式表宽度优先度高。
+                width: '100%',
+            }
+            window.editor = K.create('#editor', config);
+        });
+    </script>
+</j:jelly>

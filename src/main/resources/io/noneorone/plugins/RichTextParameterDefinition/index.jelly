@@ -9,15 +9,7 @@
             <textarea id="editor" name="value" style="width:auto;height:200px">
                 ${it.defaultParameterValue.value}
             </textarea>
-
-            <j:choose>
-                <j:when test="${it.editorType == 2}">
-                    <st:adjunct includes="io.noneorone.plugins.editorYUI" />
-                </j:when>
-                <j:otherwise>
-                    <st:adjunct includes="io.noneorone.plugins.editorKind" />
-                </j:otherwise>
-            </j:choose>
+            <st:adjunct includes="io.noneorone.plugins.editorKind" />
         </div>
     </f:entry>
 

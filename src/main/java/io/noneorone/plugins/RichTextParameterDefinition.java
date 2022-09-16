@@ -16,26 +16,10 @@ import java.io.IOException;
  */
 public class RichTextParameterDefinition extends StringParameterDefinition {
 
-    private enum EditorType {
-        KIND_EDITOR(1),
-        YUI_EDITOR(2);
-
-        private final int value;
-
-        private EditorType(int value) {
-            this.value = value;
-        }
-    }
-
     /**
-     * 是否支持将最终的内容值转为base64字符串，默认启用
+     * 是否支持将最终的内容值转为base64字符串
      */
-    private boolean base64Support = true;
-
-    /**
-     * 编辑器类型
-     */
-    private int editorType = EditorType.KIND_EDITOR.value;
+    private boolean base64Support;
 
     @DataBoundConstructor
     public RichTextParameterDefinition(String name, String defaultValue, String description) {
@@ -53,14 +37,6 @@ public class RichTextParameterDefinition extends StringParameterDefinition {
     @DataBoundSetter
     public void setBase64Support(boolean base64Support) {
         this.base64Support = base64Support;
-    }
-
-    public int getEditorType() {
-        return editorType;
-    }
-
-    public void setEditorType(int editorType) {
-        this.editorType = editorType;
     }
 
     @Override
